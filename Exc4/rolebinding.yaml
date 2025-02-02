@@ -1,0 +1,40 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: viewer-rolebinding
+  namespace: default
+subjects:
+- kind: User
+  name: viewer
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: cluster-viewer
+  apiGroup: rbac.authorization.k8s.io
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: editor-rolebinding
+  namespace: default
+subjects:
+- kind: User
+  name: editor
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: cluster-editor
+  apiGroup: rbac.authorization.k8s.io
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-clusterrolebinding
+subjects:
+- kind: User
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
